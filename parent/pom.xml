@@ -7,10 +7,15 @@
     <packaging>pom</packaging>
 
     <properties>
+        <!--Main project version -->
+        <multi-thread-slf4j-api.version>0.1</multi-thread-slf4j-api.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jdk.version>1.8</jdk.version>
         <org.slf4j.version>1.7.7</org.slf4j.version>
+        <org.springframework.version>4.0.5.RELEASE</org.springframework.version>
         <aspectjrt.version>1.8.2</aspectjrt.version>
+        <com.fasterxml.jackson.version>2.3.3</com.fasterxml.jackson.version>
+        <!--Testing dependencies -->
         <junit.version>4.11</junit.version>
         <sonar.language>java</sonar.language>
     </properties>
@@ -21,19 +26,6 @@
     </modules>
 
     <dependencies>
-        <!-- Logging -->
-        <!-- Abstract login that allow us to change the underlying logging implementation -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${org.slf4j.version}</version>
-        </dependency>
-        <!-- sfl4 to log4j adaptor -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>${org.slf4j.version}</version>
-        </dependency>
 
         <!-- Testing dependency -->
         <dependency>

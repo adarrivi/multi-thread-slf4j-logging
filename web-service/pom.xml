@@ -10,32 +10,75 @@
     </parent>
 
     <packaging>war</packaging>
-    <properties>
-        <!-- Spring -->
-        <org.springframework.version>4.0.3.RELEASE</org.springframework.version>
-        <!-- Spring MVC: Json parsing -->
-        <com.fasterxml.jackson.version>2.3.3</com.fasterxml.jackson.version>
-    </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.adarrivi</groupId>
+            <artifactId>multi-thread-slf4j-api</artifactId>
+            <version>${multi-thread-slf4j-api.version}</version>
+        </dependency>
+
+        <!-- This dependency is inherited, but we need it to exclude commons logging from it-->
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
+            <artifactId>spring-context</artifactId>
             <version>${org.springframework.version}</version>
-            <scope>test</scope>
+            <exclusions>
+                <!-- Exclude Commons Logging in favor of SLF4j -->
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
+
+        <!-- Spring web: for the web services -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${org.springframework.version}</version>
+        </dependency>
+
         <!-- Spring MVC: Servlet dependency -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.0.1</version>
+            <!-- This dependency is usually provided by the server, so don't include it into the war -->
             <scope>provided</scope>
         </dependency>
+
+        <!-- Spring Json mapping -->
         <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjrt</artifactId>
-            <version>${aspectjrt.version}</version>
-            <optional>true</optional>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-oxm</artifactId>
+            <version>${org.springframework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${com.fasterxml.jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${com.fasterxml.jackson.version}</version>
+        </dependency>
+
+        <!-- Spring AOP module -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>${org.springframework.version}</version>
+        </dependency>
+
+        <!--Testing dependencies for integration tests-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${org.springframework.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>

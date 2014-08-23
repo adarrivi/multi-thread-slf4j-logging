@@ -10,4 +10,20 @@
         <relativePath>../parent/pom.xml</relativePath>
     </parent>
 
+    <dependencies>
+        <!-- Logging -->
+        <!-- Abstract login that allow us to change the underlying logging implementation -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${org.slf4j.version}</version>
+        </dependency>
+        <!-- sfl4 to log4j adaptor -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${org.slf4j.version}</version>
+        </dependency>
+    </dependencies>
+
 </project>
