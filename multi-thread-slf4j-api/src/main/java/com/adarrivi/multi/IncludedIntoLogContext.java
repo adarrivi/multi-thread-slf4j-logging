@@ -14,6 +14,6 @@ import java.lang.annotation.Target;
 public @interface IncludedIntoLogContext {
 
     // To specify the key to be used to store the attribute value. If undefined, the attribute name will be used instead.
-    String key();
+    String key() default "";
 
 }

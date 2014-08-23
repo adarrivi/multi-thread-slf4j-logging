@@ -1,10 +1,17 @@
 package com.adarrivi.multi;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
+/**
+ * Represents a class with methods to easily access its field descriptors and annotations
+ */
 class ClassMemberFinder {
     private Class<?> givenClass;
     private Collection<Field> allFields = new ArrayList<>();
@@ -34,8 +41,11 @@ class ClassMemberFinder {
     }
 
     private void setAllFieldsAccessible() {
-        for (Field field : allFields) {
-            field.setAccessible(true);
-        }
+        allFields.forEach(field -> field.setAccessible(true));
     }
+
+    public <A extends Annotation, ACLASS extends Class<A>> Map<Field, A> getAnnotatedFieldMap(ACLASS annotationClass) {
+        return allFields.stream().filter(field -> field.getAnnotation(annotationClass) != null).collect(Collectors.toMap(Function.<Field>identity(), field -> field.getAnnotation(annotationClass)));
+    }
+
 }

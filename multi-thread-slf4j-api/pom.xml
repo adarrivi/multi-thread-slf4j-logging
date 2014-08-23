@@ -10,13 +10,4 @@
         <relativePath>../parent/pom.xml</relativePath>
     </parent>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjrt</artifactId>
-            <version>${aspectjrt.version}</version>
-            <optional>true</optional>
-        </dependency>
-    </dependencies>
-
 </project>

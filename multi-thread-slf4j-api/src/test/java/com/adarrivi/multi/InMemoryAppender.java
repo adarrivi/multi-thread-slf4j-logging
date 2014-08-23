@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Log4j appender that stores the logging information in an accessible list.
+ * Useful to analyze the contents of the logs
+ */
 public class InMemoryAppender extends AppenderSkeleton {
 
     private List<LoggingEvent> buffer = new ArrayList<>();

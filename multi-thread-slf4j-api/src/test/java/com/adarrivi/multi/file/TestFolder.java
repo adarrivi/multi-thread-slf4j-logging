@@ -1,7 +1,11 @@
-package com.adarrivi.multi;
+package com.adarrivi.multi.file;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
+/**
+ * Represents a folder to be used in the testing context. It is necessary to overcome some oddness when loading resources with Intellij
+ */
 
 public class TestFolder {
 
