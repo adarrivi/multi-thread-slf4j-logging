@@ -1,17 +1,18 @@
 package com.adarrivi.multi.integration.core.service;
 
-import com.adarrivi.multi.core.service.RandomNumberGenerator;
+import com.adarrivi.multi.core.service.AsyncRandomNumberGenerator;
 import com.adarrivi.multi.integration.GenericIntegrationTest;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class RandomNumberGeneratorIntegrationTest extends GenericIntegrationTest {
 
     @Autowired
-    private RandomNumberGenerator victim;
+    private AsyncRandomNumberGenerator victim;
 
     private List<Integer> outputNumbers;
 
@@ -22,7 +23,11 @@ public class RandomNumberGeneratorIntegrationTest extends GenericIntegrationTest
     }
 
     private void whenGenerateNumbers() {
-        outputNumbers = victim.generateRandomNumbers();
+        try {
+            outputNumbers = victim.generateRandomNumbers().get();
+        } catch (ExecutionException | InterruptedException e) {
+            Assert.fail(e.getMessage());
+        }
     }
 
     private void thenNumberListSizeShouldBe(int expectedSize) {

@@ -9,9 +9,6 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * This test requires test-log file to be created
- */
 public class MdcLoggingContextInjectorTest {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MdcLoggingContextInjectorTest.class);

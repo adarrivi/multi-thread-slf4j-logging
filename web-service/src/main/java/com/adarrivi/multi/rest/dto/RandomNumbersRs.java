@@ -10,6 +10,10 @@ public class RandomNumbersRs {
 
     private List<Integer> randomNumbers = new ArrayList<>();
 
+    RandomNumbersRs() {
+        //Required for json converter
+    }
+
     private RandomNumbersRs(ResponseStatus status, String errorMessage) {
         this.status = status;
         this.errorMessage = errorMessage;
